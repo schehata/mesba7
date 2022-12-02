@@ -5,6 +5,7 @@ class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         max_length = 4
+        category = "text"
         vocalized = False
 
         if self.request.args:
@@ -13,24 +14,22 @@ class handler(BaseHTTPRequestHandler):
             if "sentences_count" in args:
                 max_length = int(args["sentences_count"])
 
+            if "category" in args:
+                category = args["category"]
+            
             if "vocalized" in args:
                 v = False
                 if args["vocalized"].lower() == "true":
                     v = True
                 vocalized = v
-        
+
         t = []
         needed_count = max_length
         while needed_count > 0:
-            res = arrand.arrandom.rand_sentences(needed_count)
-            res = self.clean_results(res, "")
+            res = arrand.arrandom.sample(category=category, vocalized=vocalized, max_length=needed_count)
+            res = self.clean_results(res, category)
             t.extend(res)
             needed_count -= len(res)
-
-        self.send_response(200)
-        self.send_header('Content-type','application/json')
-        self.end_headers()
-        # self.wfile.write(t.encode())
 
         return {
             "result": t
