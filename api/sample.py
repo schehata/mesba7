@@ -1,4 +1,7 @@
 from http.server import BaseHTTPRequestHandler
+from urlparse import urlparse, parse_qs
+from utils.api import clean_results
+import json
 import arrand.arrandom
 
 class handler(BaseHTTPRequestHandler):
@@ -8,63 +11,29 @@ class handler(BaseHTTPRequestHandler):
         category = "text"
         vocalized = False
 
-        if self.request.args:
-            args = self.request.args
+        query = urlparse(self.path).query
+        parsed_query = parse_qs(query)
+        if "sentences_count" in parsed_query:
+            max_length = int(args["sentences_count"])
 
-            if "sentences_count" in args:
-                max_length = int(args["sentences_count"])
-
-            if "category" in args:
-                category = args["category"]
-            
-            if "vocalized" in args:
-                v = False
-                if args["vocalized"].lower() == "true":
-                    v = True
-                vocalized = v
+        if "category" in parsed_query:
+            category = args["category"]
+        
+        if "vocalized" in parsed_query:
+            v = False
+            if parsed_query["vocalized"].lower() == "true":
+                v = True
+            vocalized = v
 
         t = []
         needed_count = max_length
         while needed_count > 0:
             res = arrand.arrandom.sample(category=category, vocalized=vocalized, max_length=needed_count)
-            res = self.clean_results(res, category)
+            res = clean_results(res, category)
             t.extend(res)
             needed_count -= len(res)
 
-        return {
-            "result": t
-        }
-
-    def clean_results(res, category):
-        new_res = []
-        for r in res:
-            if r == '':
-                continue
-            elif len(r) < 30:
-                continue
-            elif '****' in r:
-                continue
-            elif 'a' in r:
-                # skip if its in english
-                continue
-
-            if '</t>' in r:
-                r.replace('</t>', '')
-            elif r[-1] == '/':
-                r = r[:-1]
-
-            # if string starts with number, remove the number
-            if r[:1].isdigit() and category == "poem":
-                r = r[2:]
-
-            print(r[-1])
-
-            r.strip()
-            r.strip('/')
-            r.strip('\/')
-            r.strip('\\')
-            r.strip(' /')
-
-            new_res.append(r)
-
-        return new_res
+        self.send_response(200)
+        self.send_header('Content-type','application/json')
+        self.end_headers()
+        self.wfile.write(json.dumps(t).encode())
