@@ -1,5 +1,5 @@
 from http.server import BaseHTTPRequestHandler
-from urlparse import urlparse, parse_qs
+from urllib.parse import urlparse, parse_qs
 from utils.api import clean_results
 import json
 import arrand.arrandom
