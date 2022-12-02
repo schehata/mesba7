@@ -1,24 +1,20 @@
 from http.server import BaseHTTPRequestHandler
+from urlparse import urlparse, parse_qs
+import json
 import arrand.arrandom
 
 class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         max_length = 4
-        vocalized = False
 
-        if self.request.args:
-            args = self.request.args
 
-            if "sentences_count" in args:
-                max_length = int(args["sentences_count"])
+        query = urlparse(self.path).query
+        parsed_query = parse_qs(query)
 
-            if "vocalized" in args:
-                v = False
-                if args["vocalized"].lower() == "true":
-                    v = True
-                vocalized = v
-        
+        if "sentences_count" in parsed_query:
+            max_length = int(parsed_query["sentences_count"])
+
         t = []
         needed_count = max_length
         while needed_count > 0:
@@ -30,11 +26,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type','application/json')
         self.end_headers()
-        # self.wfile.write(t.encode())
-
-        return {
-            "result": t
-        }
+        self.wfile.write(json.dumps(t).encode())
 
     def clean_results(res, category):
         new_res = []
