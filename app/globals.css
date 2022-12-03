@@ -1,9 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind forms;
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* font-family: "aref-ruqaa", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
 }
 
 a {
@@ -19,8 +24,66 @@ a {
   html {
     color-scheme: dark;
   }
+
   body {
     color: white;
-    background: black;
+    background: #161616;
+  }
+}
+
+.brand {
+  cursor: pointer;
+  @apply font-almarai;
+}
+
+
+
+@layer base {
+
+  body {
+    @apply bg-gray-50
+  }
+
+  h1 {
+    @apply text-2xl;
+    /* @apply font-bold; */
+  }
+
+  /* h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Aref Ruqaa';
+  } */
+
+  p {
+    padding-top: 3px;
+    line-height: 2rem;
+    /* padding-bottom: 3px; */
+    @apply font-amiri;
+  }
+
+  /* .font-aref-ruqaa {
+    font-family: 'Aref Ruqaa';
+  } */
+
+  /* .font-almarai {
+    font-family: 'Almarai';
+  }
+
+  .font-amiri {
+    font-family: 'Amiri'
+  } */
+}
+
+@layer components {
+  .container {
+    max-width: 960px;
+  }
+
+  .plusMinusBtn {
+    @apply text-xs bg-gray-100 text-gray-500 dark:bg-accent dark:text-gray-900 py-1 px-1 rounded-sm w-2/12;
   }
 }

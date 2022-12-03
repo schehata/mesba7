@@ -14,14 +14,14 @@ class handler(BaseHTTPRequestHandler):
         query = urlparse(self.path).query
         parsed_query = parse_qs(query)
         if "sentences_count" in parsed_query:
-            max_length = int(parsed_query["sentences_count"])
+            max_length = int(parsed_query["sentences_count"][0])
 
         if "category" in parsed_query:
-            category = parsed_query["category"]
+            category = parsed_query["category"][0]
         
         if "vocalized" in parsed_query:
             v = False
-            if parsed_query["vocalized"].lower() == "true":
+            if parsed_query["vocalized"][0].lower() == "true":
                 v = True
             vocalized = v
 

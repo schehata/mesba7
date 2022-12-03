@@ -14,7 +14,7 @@ class handler(BaseHTTPRequestHandler):
         parsed_query = parse_qs(query)
 
         if "sentences_count" in parsed_query:
-            max_length = int(parsed_query["sentences_count"])
+            max_length = int(parsed_query["sentences_count"][0])
 
         t = []
         needed_count = max_length
