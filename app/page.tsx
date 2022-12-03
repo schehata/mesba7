@@ -7,8 +7,7 @@ import Footer from "./Footer";
 import OptionsContainer from "./Options";
 import { log } from 'next-axiom'
 
-log.debug('debug vercel url', {url: process.env.NEXT_PUBLIC_VERCEL_URL})
-const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000";
+const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL ? `https:${process.env.NEXT_PUBLIC_VERCEL_URL}` : "http://localhost:3000";
 
 export default function Home() {
   let [initialViewLoaded, setInitialViewLoaded] = useState(false);
@@ -31,6 +30,7 @@ export default function Home() {
   };
 
   const generate = async () => {
+    log.info('generate', {metric: 'generate'})
     let endpoint = "/api/sample";
     if (options.category == "random") {
       endpoint = "/api/random";
