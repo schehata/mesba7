@@ -7,8 +7,6 @@ import Footer from "./Footer";
 import OptionsContainer from "./Options";
 import { log } from 'next-axiom'
 
-const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL ? `https:${process.env.NEXT_PUBLIC_VERCEL_URL}` : "http://localhost:3000";
-
 export default function Home() {
   let [initialViewLoaded, setInitialViewLoaded] = useState(false);
   const [options, setOptions] = useState<Options>({
@@ -36,13 +34,8 @@ export default function Home() {
       endpoint = "/api/random";
     }
 
-    const url = new URL(baseUrl + endpoint);
-    for (let [key, value] of Object.entries(options)) {
-      url.searchParams.set(key, value);
-    }
-
     try {
-      const resp = await fetch(url).then((res) => res.json());
+      const resp = await fetch(endpoint).then((res) => res.json());
       const txt = resp.join(" ");
       setResult(txt);
     } catch (err) {
