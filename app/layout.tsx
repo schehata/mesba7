@@ -1,6 +1,8 @@
 import "./globals.css";
 import Header from "./Header";
 import { Aref_Ruqaa, Almarai, Amiri } from "@next/font/google";
+export { reportWebVitals } from 'next-axiom'
+
 
 const arefRuqaa = Aref_Ruqaa({
   weight: '400',

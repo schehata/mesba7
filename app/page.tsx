@@ -39,7 +39,8 @@ export default function Home() {
       const txt = resp.join(" ");
       setResult(txt);
     } catch (err) {
-      alert(err);
+      log.error('error while generating text', {metric: 'error', error: err})
+      console.error(err);
     }
   };
 
