@@ -8,18 +8,24 @@ import OptionsContainer from "./Options";
 import { log } from 'next-axiom'
 
 export default function Home() {
-  let [initialViewLoaded, setInitialViewLoaded] = useState(false);
+  let [initialViewLoaded, setInitialViewLoaded] = useState(true);
   const [options, setOptions] = useState<Options>({
     category: "random",
     sentences_count: 5,
     vocalized: false,
     repeat: 3,
   });
-  const [result, setResult] = useState([]);
+  const [result, setResult] = useState(
+    [
+      `عندما نعيش لذواتنا فحسب، تبدو لنا الحياة قصيرة ضئيلة، تبدأ من حيث بدأنا نعي، وتنتهي بانتهاء عمرنا المحدود. أما عندما نعيش لغيرنا، أي عندما نعيش لفكرة، فإن الحياة تبدو طويلة عميقة، تبدأ من حيث بدأت الإنسانية، وتمتد بعد مفارقتنا لوجه هذه الأرض`,
+      'أحد أفضل الطرق لجلب السعادة لنفسك، هي إسعاد الآخرين من حولك، وأحد أفضل الطرق لإسعاد الآخرين من حولك هي أن تكون أنت سعيداً.',
+    // 'استخدم مصباح لتوليد قوالب نصية عشوائية باللغة العربية لاستخدامها في التصميمات مثلًا أو قوالب المواقع الالكترونية والمدونات.',
+    // 'املأ الفراغات في تصميمات التطبيقات ونماذج التصميمات المختلفة.'
+  ]);
 
-  const changeOptions = async (newOptions: Options) => {
+  const changeOptions = async (newOptions: Options, shouldGenerate: boolean = true) => {
     setOptions((prevState) => ({ ...prevState, ...newOptions }));
-    generate();
+    if(shouldGenerate) generate();
   };
 
   const copy = () => {
@@ -52,7 +58,7 @@ export default function Home() {
   const repeated = Array(options.repeat).fill("");
 
   return (
-    <main className="bg-primary flex flex-col md:flex-row cols-1 md:cols-2 grow w-full container mx-auto px-6 md:gap-6 h-full">
+    <main className="flex flex-col md:flex-row cols-1 md:cols-2 grow w-full container mx-auto px-6 md:gap-6 h-full">
       <section className="w-full md:w-4/6">
         <section className="mt-6 md:mt-0">
           <section>
@@ -78,7 +84,7 @@ export default function Home() {
             التصميمات مثلًا.
           </p>
         </div>
-        <h4 className="text-gray-500 font-bold text-xl mt-4 mb-3">الاعدادات</h4>
+        <h4 className="text-gray-500 font-bold mt-4 mb-3">الاعدادات</h4>
         <OptionsContainer options={options} changeOptions={changeOptions} />
         <Actions generate={generate} onCopy={copy} />
         <span className="flex flex-1 grow" />

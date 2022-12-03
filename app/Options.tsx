@@ -47,14 +47,14 @@ function OptionsContainer({ options, changeOptions }: { options: Options, change
   };
   const increaseRepeat = () => {
     log.info('increaseRepeat', {metric: 'increaseRepeat', value: options.repeat + 1})
-    changeOptions({ repeat: options.repeat + 1 });
+    changeOptions({ repeat: options.repeat + 1 }, false);
   };
   const decreaseRepeat = () => {
     if (options.repeat == 1) {
         return
     }
     log.info('decreaseRepeat', {metric: 'decreaseRepeat', value: options.repeat - 1})
-    changeOptions({ repeat: options.repeat - 1 });
+    changeOptions({ repeat: options.repeat - 1 }, false);
   };
 
   let vocalizationCheckbox = <></>

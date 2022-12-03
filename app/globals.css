@@ -49,6 +49,10 @@ a {
     /* @apply font-bold; */
   }
 
+  h4 {
+    @apply text-lg;
+  }
+
   /* h1,
   h2,
   h3,
