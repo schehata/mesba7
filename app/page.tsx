@@ -5,7 +5,9 @@ import Options from "../models/options";
 import Actions from "./Actions";
 import Footer from "./Footer";
 import OptionsContainer from "./Options";
+import { log } from 'next-axiom'
 
+log.debug('debug vercel url', {url: process.env.VERCEL_URL})
 const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000";
 
 export default function Home() {
