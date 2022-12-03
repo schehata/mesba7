@@ -6,7 +6,7 @@ import Actions from "./Actions";
 import Footer from "./Footer";
 import OptionsContainer from "./Options";
 
-const baseUrl = process.env.baseUrl || "http://localhost:3000";
+const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000";
 
 export default function Home() {
   let [initialViewLoaded, setInitialViewLoaded] = useState(false);
