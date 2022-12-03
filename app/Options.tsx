@@ -126,7 +126,6 @@ function OptionsContainer({ options, changeOptions }: { options: Options, change
         </div>
 
         {vocalizationCheckbox}
-        <p>Is "My Value" checked? {options.vocalized.toString()}</p>
       </div>
     </section>
   );
