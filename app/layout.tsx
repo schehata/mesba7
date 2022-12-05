@@ -1,7 +1,7 @@
 import "./globals.css";
 import Header from "./Header";
 import { Aref_Ruqaa, Almarai, Amiri } from "@next/font/google";
-import { Analytics } from '@vercel/analytics/react';
+import { AnalyticsWrapper } from './analytics';
 export { reportWebVitals } from 'next-axiom'
 
 
@@ -41,7 +41,7 @@ export default function RootLayout({
 
           {children}
         </section>
-        <Analytics />
+        <AnalyticsWrapper />
       </body>
     </html>
   );
