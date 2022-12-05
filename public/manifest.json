@@ -4,43 +4,43 @@
     "description": "مصباح هو أداة لتوليد النصوص العشوائية باللغة العربية لاستخدامها في قوالب التصميم. يمكنك التحكم في عدد الجمل وعدد الفقرات ونسخها بضغطة زر. يمكن اعتبار مصباح كـ Lorem Ipsum للغة العربية.",
     "icons": [
         {
-            "src": "/public/icons/icon_64x64.png",
-            "sizes": "64x64",
+            "src": "/icons/16.png",
+            "sizes": "16x16",
             "type": "image/png",
             "purpose": "any maskable"
         },
         {
-            "src": "/public/icons/icon_120x120.png",
-            "sizes": "120x120",
+            "src": "/icons/19.png",
+            "sizes": "19x19",
             "type": "image/png",
             "purpose": "any maskable"
         },
         {
-            "src": "/public/icons/icon_144x144.png",
-            "sizes": "144x144",
+            "src": "/icons/32.png",
+            "sizes": "32x32",
             "type": "image/png",
             "purpose": "any maskable"
         },
         {
-            "src": "/public/icons/icon_152x152.png",
-            "sizes": "152x152",
+            "src": "/icons/38.png",
+            "sizes": "38x38",
             "type": "image/png",
             "purpose": "any maskable"
         },
         {
-            "src": "/public/icons/icon_192x192.png",
-            "sizes": "192x192",
+            "src": "/icons/48.png",
+            "sizes": "48x48",
             "type": "image/png",
             "purpose": "any maskable"
         },
         {
-            "src": "/public/icons/icon_384x384.png",
-            "sizes": "384x384",
+            "src": "/icons/128.png",
+            "sizes": "128x128",
             "type": "image/png",
             "purpose": "any maskable"
         },
         {
-            "src": "/public/icons/icon_512x512.png",
+            "src": "/icons/512.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "any maskable"

@@ -19,7 +19,7 @@ export default function Head() {
       <meta name="og:site_name" property="og:site_name" content="مِصباح لتوليد النصوص العشوائية" />
       <meta name="og:description" property="og:description" content="مصباح هو أداة لتوليد النصوص العشوائية باللغة العربية لاستخدامها في قوالب التصميم. يمكنك التحكم في عدد الجمل وعدد الفقرات ونسخها بضغطة زر. يمكن اعتبار مصباح كـ Lorem Ipsum للغة العربية."></meta>
       <meta name="og:url" property="og:url" content="https://mesba7.com"></meta>
-      <meta name="og:image" property="og:image" content="https://mesba7.com/icons/icon_512x512.png"></meta>
+      <meta name="og:image" property="og:image" content="https://mesba7.com/icons/512.png"></meta>
       <meta name="og:image:width" property="og:image:width" content="512"></meta>
       <meta name="og:image:height" property="og:image:height" content="512"></meta>
       <meta name="og:image:type" property="og:image:type" content="image/png"></meta>
